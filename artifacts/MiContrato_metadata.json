@@ -1,0 +1,58 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "codigo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/4_MiControlador.sol": "MiContrato"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/4_MiControlador.sol": {
+			"keccak256": "0x94c938b26c9c609d94c2b881468949b582613a37df977a15a48b1cd58be50e7b",
+			"urls": [
+				"bzz-raw://e8956e97696d8e748d77fd3e70c195d2732a8296d572748b88a216d455acc771",
+				"dweb:/ipfs/QmcQVS86dR7ZMkRyABaetKCGitzrgKVR6tLWHy1327qbEP"
+			]
+		}
+	},
+	"version": 1
+}
