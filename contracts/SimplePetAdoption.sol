@@ -3,28 +3,24 @@ pragma solidity ^0.8.0;
 
 contract SimplePetAdoption {
 
-    // ---- Variables ----
-    address public owner; // dueño del contrato
-
     struct Pet {
         string name;
         address adopter;
         uint timeAdopted;
     }
 
-    Pet[] public pets; // arreglo público
+    Pet[] public pets; 
 
-    // ---- Eventos ----
     event PetRegistered(string name, uint id);
     event PetAdopted(address adopter, uint id);
     event PetReturned(address adopter, uint id);
 
-    // ---- Constructor ----
+    address public owner;
+
     constructor() {
-        owner = msg.sender; // el que despliega es el refugio
+        owner = msg.sender; 
     }
 
-    // ---- Modificadores ----
     modifier onlyOwner() {
         require(msg.sender == owner, "Solo el dueno puede ejecutar esta funcion");
         _;
@@ -35,15 +31,11 @@ contract SimplePetAdoption {
         _;
     }
 
-    // ---- Funciones ----
-
-    // 1️⃣ Registrar mascota (solo el refugio)
     function registerPet(string memory _name) public onlyOwner {
         pets.push(Pet(_name, address(0), 0));
         emit PetRegistered(_name, pets.length - 1);
     }
 
-    // 2️⃣ Adoptar mascota (solo no dueños)
     function adoptPet(uint _id) public onlyNotOwner {
         require(_id < pets.length, "Mascota no existe");
         require(pets[_id].adopter == address(0), "Mascota ya adoptada");
@@ -53,7 +45,6 @@ contract SimplePetAdoption {
         emit PetAdopted(msg.sender, _id);
     }
 
-    // 3️⃣ Devolver mascota dentro de 2 minutos
     function returnPet(uint _id) public onlyNotOwner {
         require(_id < pets.length, "Mascota no existe");
         Pet storage pet = pets[_id];
@@ -65,7 +56,6 @@ contract SimplePetAdoption {
         emit PetReturned(msg.sender, _id);
     }
 
-    // 4️⃣ Contar mascotas adoptadas
     function countAdopted() public view returns (uint) {
         uint count = 0;
         for (uint i = 0; i < pets.length; i++) {
